@@ -1,0 +1,9 @@
+use projetoweb;
+
+create table usuario(
+    id int primary key not null auto_increment,
+    nome varchar(50),
+    cpf varchar(11),
+    email varchar(50),
+    senha varchar(50)
+);

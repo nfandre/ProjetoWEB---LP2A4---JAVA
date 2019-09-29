@@ -1,0 +1,24 @@
+.fundo {
+    width: 100vw;
+     height: 100vh;
+     background: white;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+}
+.caixa {
+    width: 450px;
+    height: 550px;
+    background: #3280f5;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+body {
+    margin: 0px;
+}
+p{
+    color: white;;
+}
