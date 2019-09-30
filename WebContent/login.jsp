@@ -22,7 +22,7 @@
 
 
 
-                                <form class="form-horizontal" role="form" action="usuarioCadastro" method="post">
+                                <form class="form-horizontal" role="form" action="./UsuarioControlador?rota=logado" method="post">
                                     <br>
                                     <h3 style="color: white">Entrar: </h3>
 

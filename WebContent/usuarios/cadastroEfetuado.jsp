@@ -28,7 +28,11 @@
 							    retorno = ""+ request.getAttribute("retorno");
 								String mensagem = null;
 								String botao = null;
-								if(retorno == null ){
+								if(retorno.equals(null)){
+									
+								%>
+								<h1>teste</h1>
+								<%
 									mensagem = "Conta criada :)";
 									botao = "Entrar";
 
@@ -48,7 +52,7 @@
 
                                 <form class="form-horizontal" role="form" action="./loginCadastro.jsp" method="post">
                                     <br>
-                                    <h3 style="color: white"><%=mensagem %>  </h3>
+                                    <h3 style="color: white"><%=mensagem %><%=request.getAttribute("retorno") %>  </h3>
 
                                     <br>
                                     <button type="submit" id="cadastrar" class="btn btn-info mt-9" onclick="validarCpfEmail()"><%=botao%></button>

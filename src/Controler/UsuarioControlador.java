@@ -20,7 +20,7 @@ public class UsuarioControlador extends HttpServlet {
     String add="usuarios/adicionar.jsp";
     String edit="usuarios/editar.jsp";
     String cadastrado = "usuarios/cadastroEfetuado.jsp";
-
+    String logado = "index.html";
     public UsuarioControlador() {
         super();
 
@@ -42,12 +42,10 @@ public class UsuarioControlador extends HttpServlet {
 		String acesso="";
 		String rota=request.getParameter("rota");
 		String retorno=null;
+		UsuarioPersist up = new UsuarioPersist();
 		if(rota.equalsIgnoreCase("cadastrado")) {
 			acesso=cadastrado;
-			UsuarioPersist up = new UsuarioPersist();
-
 			
-
 			Usuario c = new Usuario();
 
 			c.setCpf(request.getParameter("cpf"));
@@ -57,13 +55,29 @@ public class UsuarioControlador extends HttpServlet {
 			
 			if(up.VerificarSeUsuarioExiste(c)==null) {
 			   up.inserir(c);
+			  // retorno=null;
 			}else {
 				retorno = "Usuario já está cadastrado";
+			}
+		}
+		if(rota.equalsIgnoreCase("logado")) {
+			String email = request.getParameter("email");
+			if(up.verificarEmailExiste(email)==null) {
+				retorno = "email não cadastrado";
+			}else {
+				Usuario userLogado = new Usuario();
+				if(up.verificarSenhaEstaCorreta(userLogado)==true) {
+					request.setAttribute("userLogado", userLogado);
+				}else {
+					retorno = "A senha está inválida";
+					logado = "erro";
+				}
 			}
 		}
 		request.setAttribute("retorno", retorno);
 		RequestDispatcher usuariosViews = request.getRequestDispatcher(acesso);
 		usuariosViews.forward(request, response);
+		
 	}
 
 }

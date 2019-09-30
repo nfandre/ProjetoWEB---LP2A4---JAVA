@@ -59,6 +59,7 @@ public class Usuario {
 			
 			result = result || this.getEmail().equals(outroUser.getEmail());
 			
+			
 		}
 		return result;
 	}

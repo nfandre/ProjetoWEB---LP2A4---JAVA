@@ -9,7 +9,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/federal/Desktop/ProjetoWEB-LP2A4-JAVA/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/federal/Desktop/ProjetoWEB-LP2A4-JAVA/mysql-connector-java-5.1.48-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/afreitas/Desktop/teste/ProjetoWEB-LP2A4-JAVA/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/afreitas/Desktop/teste/ProjetoWEB-LP2A4-JAVA/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

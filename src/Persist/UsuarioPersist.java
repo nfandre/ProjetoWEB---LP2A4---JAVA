@@ -101,5 +101,37 @@ public class UsuarioPersist{
     	}
     	return resultado;
     }
+    public boolean verificarSenhaEstaCorreta(Usuario usuario) {
+    	boolean resultado = false;
+    	for(Usuario u: listar()) {
+    		if(u.equals(usuario)) {
+    			if(u.getSenha()==usuario.getSenha()) {
+        			resultado = true;
+        			break;
+    			}
+
+    		}
+    	}
+    	return resultado;
+    }
+    public Usuario verificarEmailExiste(String email) {
+    	Usuario u = null;
+    	String sql = "SELECT * FROM usuario WHERE email = "+email;
+    	try {
+    		stmt = AcessoBD.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				u = new Usuario();
+				u.setId(rs.getInt("id"));
+				u.setCpf(rs.getString("cpf"));
+				u.setEmail(rs.getString("email"));
+				u.setNome(rs.getString("nome"));
+				u.setSenha(rs.getString("senha"));
+			}
+		return u;
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		}
+    }
     
 }
