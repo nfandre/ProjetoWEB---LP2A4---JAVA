@@ -41,23 +41,27 @@ public class UsuarioControlador extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acesso="";
 		String rota=request.getParameter("rota");
+		String retorno=null;
 		if(rota.equalsIgnoreCase("cadastrado")) {
 			acesso=cadastrado;
 			UsuarioPersist up = new UsuarioPersist();
 
 			
-			
+
 			Usuario c = new Usuario();
-			
+
 			c.setCpf(request.getParameter("cpf"));
 			c.setEmail(request.getParameter("email"));
 			c.setNome(request.getParameter("nome"));
 			c.setSenha(request.getParameter("senha"));
 			
 			if(up.VerificarSeUsuarioExiste(c)==null) {
-				up.inserir(c);
+			   up.inserir(c);
+			}else {
+				retorno = "Usuario já está cadastrado";
 			}
 		}
+		request.setAttribute("retorno", retorno);
 		RequestDispatcher usuariosViews = request.getRequestDispatcher(acesso);
 		usuariosViews.forward(request, response);
 	}

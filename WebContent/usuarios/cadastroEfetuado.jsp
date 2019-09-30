@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script type="text/javascript" src="../lib/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
-    <link href="../lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/padrao.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/login.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/js/bootstrap.min.js"></script>
+    <link href="./lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./lib/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./lib/css/padrao.css" rel="stylesheet" type="text/css">
+    <link href="./lib/css/login.css" rel="stylesheet" type="text/css">
     <title>Conta criada</title>
 </head>
 <body>
@@ -24,26 +24,34 @@
 
 								<%
 								String resultado=request.getParameter("cpf");
-								String mensagem;
-								String botao;
-								if(!resultado.isEmpty() || resultado == null ){
-									
+								String retorno = null;
+							    retorno = ""+ request.getAttribute("retorno");
+								String mensagem = null;
+								String botao = null;
+								if(retorno == null ){
 									mensagem = "Conta criada :)";
 									botao = "Entrar";
+
+									
+								}else
+									if(retorno != null){
+										mensagem = retorno;
+										botao = "Tente novamente";
+
 								}else{
 									mensagem = "Ocorreu um erro durante o cadastro :(";
-									botao = "Tente novamente";
+									botao = "Entrar";
 								}
-								
+
 								
 								%>
 
-                                <form class="form-horizontal" role="form" action="./login.jsp" method="post">
+                                <form class="form-horizontal" role="form" action="./loginCadastro.jsp" method="post">
                                     <br>
-                                    <h3 style="color: white"><%=mensagem %> </h3>
+                                    <h3 style="color: white"><%=mensagem %>  </h3>
 
                                     <br>
-                                    <button type="submit" id="cadastrar" class="btn btn-info mt-9" onclick="validarCpfEmail()"><%=botao %></button>
+                                    <button type="submit" id="cadastrar" class="btn btn-info mt-9" onclick="validarCpfEmail()"><%=botao%></button>
                                     
                                     
 
