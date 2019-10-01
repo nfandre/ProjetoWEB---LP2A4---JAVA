@@ -116,16 +116,16 @@ public class UsuarioPersist{
     }
     public Usuario verificarEmailExiste(String email) {
     	Usuario u = null;
-    	String sql = "SELECT * FROM usuario WHERE email = "+email;
+    	String sql = "SELECT * FROM usuario WHERE email = "+ email;
     	try {
     		stmt = AcessoBD.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				u = new Usuario();
 				u.setId(rs.getInt("id"));
+				u.setNome(rs.getString("nome"));
 				u.setCpf(rs.getString("cpf"));
 				u.setEmail(rs.getString("email"));
-				u.setNome(rs.getString("nome"));
 				u.setSenha(rs.getString("senha"));
 			}
 		return u;

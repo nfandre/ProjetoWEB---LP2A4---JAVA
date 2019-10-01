@@ -55,9 +55,9 @@ public class UsuarioControlador extends HttpServlet {
 			
 			if(up.VerificarSeUsuarioExiste(c)==null) {
 			   up.inserir(c);
-			  // retorno=null;
+			   retorno = "inserido";
 			}else {
-				retorno = "Usuario já está cadastrado";
+				retorno = "JaCadastrado";
 			}
 		}
 		if(rota.equalsIgnoreCase("logado")) {

@@ -23,36 +23,39 @@
                             <div class="d-flex justify-content-center col-sm-9 col-md-9 col-lg-9" align="center">
 
 								<%
+								String redirect=null;
+								
 								String resultado=request.getParameter("cpf");
 								String retorno = null;
+
 							    retorno = ""+ request.getAttribute("retorno");
 								String mensagem = null;
 								String botao = null;
-								if(retorno.equals(null)){
+								if(retorno.trim().equals("inserido")==true){
 									
-								%>
-								<h1>teste</h1>
-								<%
 									mensagem = "Conta criada :)";
 									botao = "Entrar";
+									redirect ="./login.jsp";
 
 									
 								}else
-									if(retorno != null){
-										mensagem = retorno;
+									if(retorno.trim().equals("JaCadastrado") ==true){
+										mensagem = "Usuario ja cadastrado no nosso sistema";
 										botao = "Tente novamente";
+										redirect ="./loginCadastro.jsp";
 
 								}else{
 									mensagem = "Ocorreu um erro durante o cadastro :(";
-									botao = "Entrar";
+									botao = "Tente novamente";
+									redirect ="./loginCadastro.jsp";
 								}
 
 								
 								%>
 
-                                <form class="form-horizontal" role="form" action="./loginCadastro.jsp" method="post">
+                                <form class="form-horizontal" role="form" action="<%=redirect%>" method="post">
                                     <br>
-                                    <h3 style="color: white"><%=mensagem %><%=request.getAttribute("retorno") %>  </h3>
+                                    <h3 style="color: white"><%=mensagem %>  </h3>
 
                                     <br>
                                     <button type="submit" id="cadastrar" class="btn btn-info mt-9" onclick="validarCpfEmail()"><%=botao%></button>
