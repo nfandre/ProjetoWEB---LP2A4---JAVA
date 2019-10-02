@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +15,20 @@
       <div class="container">
         <div class="row text-center">
           <div class="col-md-12 text-center">
-            <h1 class="text-center">Sistema de Gerenciamento de Cursos</h1>
+            <h1 class="text-center">Sistema de Gerenciamento de Cursos <%=request.getAttribute("userLogado") %></h1>
           </div>
         </div>
       </div>
     </div>
-    <div class="section">
+    <%
+     if(request.getAttribute("userLogado")==null){
+    	 
+     }else{
+    	 
+    	 
+    	 
+    	 %>
+       <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
@@ -29,12 +40,22 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 	 
+    	 
+    	 
+    	 <%
+    	 
+    	 
+     }
+    
+    
+    %>
+
     <footer>
       <div class="navbar navbar-fixed-bottom bgred">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 text-center" style="top:13px;color:#fff;">Â©nfandre - AndrÃ© Nascimento de Freitas</div>
+            <div class="col-sm-12 text-center" style="top:13px;color:#fff;">©nfandre - André Nascimento de Freitas</div>
           </div>
         </div>
       </div>

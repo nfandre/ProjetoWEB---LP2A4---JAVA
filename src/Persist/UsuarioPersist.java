@@ -101,12 +101,13 @@ public class UsuarioPersist{
     	}
     	return resultado;
     }
-    public boolean verificarSenhaEstaCorreta(Usuario usuario) {
+    public boolean verificarSenhaEstaCorreta(Usuario usuario, String senha) {
     	boolean resultado = false;
     	for(Usuario u: listar()) {
     		if(u.equals(usuario)) {
-    			if(u.getSenha()==usuario.getSenha()) {
-        			resultado = true;
+    			if(u.getSenha().trim().equals(senha)==true) {
+        			
+    				resultado = true;
         			break;
     			}
 
@@ -116,7 +117,7 @@ public class UsuarioPersist{
     }
     public Usuario verificarEmailExiste(String email) {
     	Usuario u = null;
-    	String sql = "SELECT * FROM usuario WHERE email = "+ email;
+    	String sql = "SELECT * FROM usuario WHERE email = '"+ email+"'";
     	try {
     		stmt = AcessoBD.prepareStatement(sql);
 			rs = stmt.executeQuery();
