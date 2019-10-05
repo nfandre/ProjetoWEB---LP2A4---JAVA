@@ -75,4 +75,44 @@ public class UsuarioPersist {
 		}
 		return u;
 	}
+    public Usuario VerificarSeUsuarioExiste(Usuario usuario) {
+    	Usuario resultado = null;
+    	for(Usuario u: findAll()) {
+    		if(u.equals(usuario)) {
+    			resultado = u;
+    			break;
+    		}
+    	}
+    	return resultado;
+    }
+    public boolean verificarSenhaEstaCorreta(Usuario usuario, String senha) {
+    	boolean resultado = false;
+    	for(Usuario u: findAll()) {
+    		if(u.equals(usuario)) {
+    			if(u.getSenha().trim().equals(senha)==true) {
+        			
+    				resultado = true;
+        			break;
+    			}
+
+    		}
+    	}
+    	return resultado;
+    }
+    public Usuario verificarEmailExiste(String email) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		Usuario u =null;
+		try {
+			u = em.find(Usuario.class, email);
+		} catch (Exception e) {
+			e.getMessage();
+		}finally {
+			em.close();
+		}
+		
+		return u;
+    }
+	
+	
 }

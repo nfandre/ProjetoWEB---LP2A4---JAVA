@@ -8,9 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.persistence.EntityManager;
 import Model.Usuario;
-import PersistJDBC.UsuarioPersist;
+import PersistJPA.UsuarioPersist;
 
 
 @WebServlet("/UsuarioControlador")
@@ -42,20 +42,20 @@ public class UsuarioControlador extends HttpServlet {
 		String acesso="";
 		String rota=request.getParameter("rota");
 		String retorno=null;
-		UsuarioPersist up = new UsuarioPersist();
+		UsuarioPersist ut = new UsuarioPersist();
 		//Tela de cadastro
 		if(rota.equalsIgnoreCase("cadastrado")) {
 			acesso=cadastrado;
 			
-			Usuario c = new Usuario();
+			Usuario u = new Usuario();
 
-			c.setCpf(request.getParameter("cpf"));
-			c.setEmail(request.getParameter("email"));
-			c.setNome(request.getParameter("nome"));
-			c.setSenha(request.getParameter("senha"));
-			
-			if(up.VerificarSeUsuarioExiste(c)==null) {
-			   up.inserir(c);
+			u.setCpf(request.getParameter("cpf"));
+			u.setEmail(request.getParameter("email"));
+			u.setNome(request.getParameter("nome"));
+			u.setSenha(request.getParameter("senha"));
+			   ut.save(u);
+			if(ut.VerificarSeUsuarioExiste(u)==null) {
+			   ut.save(u);
 			   retorno = "inserido";
 			}else {
 				retorno = "JaCadastrado";
@@ -64,14 +64,14 @@ public class UsuarioControlador extends HttpServlet {
 		//tela de login
 		if(rota.equalsIgnoreCase("logado")) {
 			String email = request.getParameter("email");
-			if(up.verificarEmailExiste(email)==null) {
+			if(ut.verificarEmailExiste(email)==null) {
 				retorno = "email não cadastrado";
 				acesso = "email";
 			}else {
 				String senha = request.getParameter("senha");
-				Usuario userLogado = up.verificarEmailExiste(email);
+				Usuario userLogado = ut.verificarEmailExiste(email);
 
-				if(up.verificarSenhaEstaCorreta(userLogado,senha)==true) {
+				if(ut.verificarSenhaEstaCorreta(userLogado,senha)==true) {
 					
 					request.setAttribute("userLogado", userLogado);
 				}else {

@@ -6,10 +6,12 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!-- Lista de entidades -->
     <class>Model.Usuario</class>
+    <class>Model.Curso</class>
+    <class>Model.Cliente</class>
     <properties>
       <!-- Propriedades JDBC -->
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/projetoweb"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/projetoweb"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.password" value="usbw"/>
       <!-- Configurações específicas do Hibernate -->
