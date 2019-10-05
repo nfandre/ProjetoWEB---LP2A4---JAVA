@@ -1,2 +1,8 @@
-/Persist/
+/META-INF/
+/tests/
+/bancoDados/
 /Controler/
+/PersistJDBC/
+/serv/
+/PersistJPA/
+/Model/

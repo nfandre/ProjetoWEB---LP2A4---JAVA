@@ -1,7 +1,15 @@
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
-	private int id;
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	private Integer id;
 	private String cpf;
 	private String nome;
 	private String email;
@@ -12,7 +20,7 @@ public class Usuario {
 	
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

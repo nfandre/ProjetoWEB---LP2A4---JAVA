@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.Cliente;
 import Model.Usuario;
-import Persist.UsuarioPersist;
+import PersistJDBC.UsuarioPersist;
 
 /**
  * Servlet implementation class usuarioCadastro

@@ -1,7 +1,7 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="Model.Usuario"%>
 <%@page import=" java.util.List"%>
-<%@page import="Persist.UsuarioPersist"%>
+<%@page import="PersistJDBC.UsuarioPersist"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
