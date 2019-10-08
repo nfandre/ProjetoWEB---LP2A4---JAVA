@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.Filter;
+import org.hibernate.query.Query;
+
 import Model.Usuario;
 import bancoDados.ConnectionFactory;
 
@@ -104,7 +107,10 @@ public class UsuarioPersist {
 		
 		Usuario u =null;
 		try {
-			u = em.find(Usuario.class, email);
+			String emailConsulta = "from Usuario u where email = '"+email+"'";
+			List<Usuario> usuarios = null;
+			usuarios = em.createQuery(emailConsulta).getResultList();
+			u = em.find(Usuario.class, usuarios.get(0).getId());
 		} catch (Exception e) {
 			e.getMessage();
 		}finally {

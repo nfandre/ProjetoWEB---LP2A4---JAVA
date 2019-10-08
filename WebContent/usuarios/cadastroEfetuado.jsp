@@ -44,11 +44,19 @@
 										botao = "Tente novamente";
 										redirect ="./loginCadastro.jsp";
 
-								}else{
-									mensagem = "Ocorreu um erro durante o cadastro :(";
-									botao = "Tente novamente";
-									redirect ="./loginCadastro.jsp";
-								}
+								}else
+									if(retorno.trim().equals("email") ==true || retorno.trim().equals("senha")){
+										mensagem = "Usuario ou senha inválidos :(";
+										botao = "Tente novamente";
+										redirect ="./login.jsp";
+											
+									}
+									else{
+										mensagem = "Ocorreu um erro durante o cadastro :(";
+										botao = "Tente novamente";
+										redirect ="./loginCadastro.jsp";
+									}
+		
 
 								
 								%>

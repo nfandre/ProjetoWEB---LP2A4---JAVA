@@ -42,7 +42,7 @@ public class UsuarioControlador extends HttpServlet {
 		String acesso="";
 		String rota=request.getParameter("rota");
 		String retorno=null;
-		UsuarioPersist ut = new UsuarioPersist();
+		UsuarioPersist up = new UsuarioPersist();
 		//Tela de cadastro
 		if(rota.equalsIgnoreCase("cadastrado")) {
 			acesso=cadastrado;
@@ -53,9 +53,9 @@ public class UsuarioControlador extends HttpServlet {
 			u.setEmail(request.getParameter("email"));
 			u.setNome(request.getParameter("nome"));
 			u.setSenha(request.getParameter("senha"));
-			   ut.save(u);
-			if(ut.VerificarSeUsuarioExiste(u)==null) {
-			   ut.save(u);
+			System.out.println(up.VerificarSeUsuarioExiste(u));
+			if(up.VerificarSeUsuarioExiste(u)==null) {
+			   up.save(u);
 			   retorno = "inserido";
 			}else {
 				retorno = "JaCadastrado";
@@ -64,19 +64,21 @@ public class UsuarioControlador extends HttpServlet {
 		//tela de login
 		if(rota.equalsIgnoreCase("logado")) {
 			String email = request.getParameter("email");
-			if(ut.verificarEmailExiste(email)==null) {
-				retorno = "email não cadastrado";
-				acesso = "email";
+			System.out.println(up.verificarEmailExiste(email));
+			if(up.verificarEmailExiste(email)==null) {
+				retorno = "email";
+				acesso=cadastrado;
 			}else {
 				String senha = request.getParameter("senha");
-				Usuario userLogado = ut.verificarEmailExiste(email);
+				Usuario userLogado = up.verificarEmailExiste(email);
 
-				if(ut.verificarSenhaEstaCorreta(userLogado,senha)==true) {
+				if(up.verificarSenhaEstaCorreta(userLogado,senha)==true) {
 					
 					request.setAttribute("userLogado", userLogado);
 				}else {
-					retorno = "A senha está inválida";
-					acesso = "erro";
+					retorno = "senha";
+					acesso=cadastrado;
+
 				}
 			}
 		}
