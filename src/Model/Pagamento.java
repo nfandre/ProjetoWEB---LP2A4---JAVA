@@ -10,14 +10,14 @@ import javax.persistence.ManyToOne;
 public class Pagamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String cpf;
 	private String curso;
 	private String dtaInscricao;
 	@ManyToOne 
 	private Cliente cliente;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {

@@ -4,9 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.Filter;
-import org.hibernate.query.Query;
-
 import Model.Usuario;
 import bancoDados.ConnectionFactory;
 
