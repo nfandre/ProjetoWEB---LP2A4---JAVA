@@ -19,7 +19,6 @@ public class Cliente {
 	@ManyToOne
 	private Curso curso;
 	
-	
 	public Curso getCurso() {
 		return curso;
 	}
