@@ -1,11 +1,16 @@
 package Controler;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Model.Curso;
+import PersistJPA.CursoPersist;
 
 /**
  * Servlet implementation class CursoControlador
@@ -14,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CursoControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     String listar="cursos/alteracao.jsp";
-    String add="cursos/cadastro.jsp";
+    String add="cursos/index.jsp";
     String edit="cursos/consulta.jsp";
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,16 +33,28 @@ public class CursoControlador extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String acesso="";
+		String rota=request.getParameter("rota");
+		if(rota.equalsIgnoreCase("add")) {
+			acesso= add;
+			CursoPersist cp = new CursoPersist();
+			Curso c = new Curso();
+			c.setCurso(request.getParameter("curso"));
+			c.setDescricao(request.getParameter("descricao"));
+			c.setSite(request.getParameter("site"));
+			c.setValor(request.getParameter("valor"));
+			cp.save(c);
+			
+			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
+			cursoViews.forward(request, response);
+		}
 	}
 
 }

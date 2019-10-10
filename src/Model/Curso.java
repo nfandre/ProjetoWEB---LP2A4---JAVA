@@ -10,22 +10,32 @@ public class Curso {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Integer  id;
-	private String nome;
+	private String curso;
+	private String descricao;
 	private String valor;
 	private String site;
 	
 	
+	public String getCurso() {
+		return curso;
+	}
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 	public String getValor() {
 		return valor;

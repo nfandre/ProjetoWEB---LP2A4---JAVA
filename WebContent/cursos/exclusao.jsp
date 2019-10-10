@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +31,7 @@
             <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div class="col-sm-3">
-                  <label for="inputCPF" class="control-label">Informar o CURSO a ser EXCLU√çDO:</label>
+                  <label for="inputCPF" class="control-label">Informar o CURSO a ser EXCLUÕDO:</label>
                 </div>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="inputCPF" placeholder="CURSO" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx" required="">
@@ -36,7 +39,7 @@
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                  <button type="submit" class="btn btn-info">Exclu√≠r</button>
+                  <button type="submit" class="btn btn-info">ExcluÌr</button>
                 </div>
               </div>
             </form>
@@ -48,7 +51,7 @@
       <div class="navbar navbar-fixed-bottom bgred">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 text-center" style="top:13px;color:#fff;">¬©nfandre - Andr√© Nascimento de Freitas</div>
+            <div class="col-sm-12 text-center" style="top:13px;color:#fff;">©nfandre - AndrÈ Nascimento de Freitas</div>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ public class CursoPersist {
         try{
             stmt = AcessoBD.prepareStatement(cmdSql,Statement.RETURN_GENERATED_KEYS);
             
-            stmt.setString(1, curso.getNome());
+            stmt.setString(1, curso.getCurso());
             stmt.setString(2, curso.getSite());
             stmt.setString(3, curso.getValor());
             stmt.execute();
@@ -49,7 +49,7 @@ public class CursoPersist {
 			while (rs.next()) {
 				Curso c = new Curso();
 				c.setId(rs.getInt("id"));
-				c.setNome(rs.getString("nome"));
+				c.setCurso(rs.getString("curso"));
 				c.setValor(rs.getString("valor"));
 				c.setSite(rs.getString("site"));
 
@@ -68,7 +68,7 @@ public class CursoPersist {
         try{
             stmt = AcessoBD.prepareStatement(cmdSql);
             
-            stmt.setString(1, curso.getNome());
+            stmt.setString(1, curso.getCurso());
             stmt.setString(2, curso.getValor());
             stmt.setString(3, curso.getSite());
             stmt.executeUpdate();

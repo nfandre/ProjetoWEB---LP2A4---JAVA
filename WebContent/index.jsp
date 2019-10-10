@@ -34,7 +34,7 @@
           <div class="col-md-12 text-center">
             <div class="col-md-12  btn-group btn-group-lg btn-group-vertical">
               <a href="clientes/index.html" class="btn btn-default">CLIENTES</a>
-              <a href="cursos/index.html" class="btn btn-default">CURSOS</a>
+              <a href="cursos/index.jsp" class="btn btn-default">CURSOS</a>
               <a href="pagamentos/index.html" class="btn btn-default">PAGAMENTOS</a>
             </div>
           </div>

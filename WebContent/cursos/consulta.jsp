@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +23,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3 class="tt_menu">&gt;&gt; CURSOS - ALTERAR UM CURSO &lt;&lt;</h3>
+            <h3 class="tt_menu">&gt;&gt; CURSOS - CONSULTAR UM NOVO CURSO &lt;&lt;</h3>
           </div>
         </div>
         <div class="row">
@@ -28,39 +31,15 @@
             <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="inputCURSO" class="control-label">Informar o CURSO:</label>
+                  <label for="inputEmail3" class="control-label">Informar o CURSO:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputCURSO" placeholder="Curso">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputNome" class="control-label">Informar o NOME:</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputNome" placeholder="Nome">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputVALOR" class="control-label">Informar o VALOR:</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputVALOR" placeholder="Valor">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-2">
-                  <label for="inputSITE" class="control-label">Informar o SITE:</label>
-                </div>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputSITE" placeholder="Site">
+                  <input type="text" class="form-control" id="inputEmail3" placeholder="CURSO" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF no formato: xxx.xxx.xxx-xx" required="">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-info">Alterar</button>
+                  <button type="submit" class="btn btn-info">Consultar</button>
                 </div>
               </div>
             </form>
@@ -68,6 +47,15 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div class="navbar navbar-fixed-bottom bgred">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 text-center" style="top:13px;color:#fff;">©nfandre - André Nascimento de Freitas</div>
+          </div>
+        </div>
+      </div>
+    </footer>
     <div class="section">
       <div class="container">
         <div class="row">
@@ -77,15 +65,6 @@
         </div>
       </div>
     </div>
-    <footer>
-      <div class="navbar navbar-fixed-bottom bgred">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 text-center" style="top:13px;color:#fff;">Â©nfandre - AndrÃ© Nascimento de Freitas</div>
-          </div>
-        </div>
-      </div>
-    </footer>
   
 
 </body></html>
