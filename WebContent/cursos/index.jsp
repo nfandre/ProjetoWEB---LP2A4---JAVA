@@ -55,7 +55,7 @@
 	    	CursoPersist cp = new CursoPersist();
 	    	List<Curso> cursos = cp.findAll();
 	    	for(Curso c:cursos){
-
+			request.setAttribute("curso", c);
 	    	
 	    %>
 		   <div class="card mt-4">
@@ -67,7 +67,7 @@
 		            <h5>Valor: <%=c.getValor() %></h5>
 		        </div>
 		    </div>
-		    <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-info mt-4">Editar postagem</button></a>
+		    <a href="../CursoControlador?rota=edit"><button class="btn btn-info mt-4">Editar postagem</button></a>
             <a href="/admin/postagens/deletar/{{_id}}"><button class="btn btn-danger mt-4">Deletar postagem</button></a>
             <hr>
 	    <%

@@ -52,7 +52,6 @@ public class UsuarioControlador extends HttpServlet {
 			u.setEmail(request.getParameter("email"));
 			u.setNome(request.getParameter("nome"));
 			u.setSenha(request.getParameter("senha"));
-			System.out.println(up.VerificarSeUsuarioExiste(u));
 			if(up.VerificarSeUsuarioExiste(u)==null) {
 			   up.save(u);
 			   retorno = "inserido";
@@ -63,7 +62,6 @@ public class UsuarioControlador extends HttpServlet {
 		//tela de login
 		if(rota.equalsIgnoreCase("logado")) {
 			String email = request.getParameter("email");
-			System.out.println(up.verificarEmailExiste(email));
 			if(up.verificarEmailExiste(email)==null) {
 				retorno = "email";
 				acesso=cadastrado;
