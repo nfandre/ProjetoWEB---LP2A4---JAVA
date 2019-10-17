@@ -1,3 +1,5 @@
+<%@page import="Model.Curso"%>
+<%@page import="PersistJPA.CursoPersist"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -26,15 +28,22 @@
             <h3 class="tt_menu">&gt;&gt; CURSOS - ALTERAR UM CURSO &lt;&lt;</h3>
           </div>
         </div>
+        
+        
+        <%
+        Integer id = (Integer) request.getAttribute("i");
+        CursoPersist cp = new CursoPersist();
+		Curso c = cp.findById(id);
+        %>
         <div class="row">
           <div class="col-md-12">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" method="post"  action="../CursoControlador?rota=add">
               <div class="form-group">
                 <div class="col-sm-2">
                   <label for="inputCURSO" class="control-label">Informar o CURSO:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputCURSO" placeholder="Curso">
+                  <input type="text" class="form-control" id="inputCURSO" placeholder="Curso <%=request.getParameter("curso") %>">
                 </div>
               </div>
               <div class="form-group">

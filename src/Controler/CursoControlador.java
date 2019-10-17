@@ -20,7 +20,7 @@ public class CursoControlador extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     String listar="cursos/alteracao.jsp";
     String add="cursos/index.jsp";
-    String edit="cursos/cadastro.jsp";
+    String edit="cursos/alteracao.jsp";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,7 +33,16 @@ public class CursoControlador extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String acesso="";
+		String rota=request.getParameter("rota");
+		if(rota.equalsIgnoreCase("edit")) {
+			acesso = edit;
+			
+			request.setAttribute("i", request.getParameter("i"));
+			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
+			cursoViews.forward(request, response);
+			
+		}
 	}
 
 	/**
@@ -55,13 +64,7 @@ public class CursoControlador extends HttpServlet {
 			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
 			cursoViews.forward(request, response);
 		}
-		if(rota.equalsIgnoreCase("edit")) {
-			acesso = "edit";
-			request.getAttribute("curso");
-			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
-			cursoViews.forward(request, response);
-			
-		}
+
 	}
 
 }

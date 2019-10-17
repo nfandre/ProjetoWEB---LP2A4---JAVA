@@ -49,14 +49,18 @@
     </div>
     
  	<div class="container">
- 	
+
+
+
  	 <div class="row justify-content-center">
  	      <%
 	    	CursoPersist cp = new CursoPersist();
+ 	      
 	    	List<Curso> cursos = cp.findAll();
+	    
 	    	for(Curso c:cursos){
+
 			request.setAttribute("curso", c);
-	    	
 	    %>
 		   <div class="card mt-4">
 		        <div class="card-body">
@@ -67,21 +71,17 @@
 		            <h5>Valor: <%=c.getValor() %></h5>
 		        </div>
 		    </div>
-		    <a href="../CursoControlador?rota=edit"><button class="btn btn-info mt-4">Editar postagem</button></a>
-            <a href="/admin/postagens/deletar/{{_id}}"><button class="btn btn-danger mt-4">Deletar postagem</button></a>
+				
+		      <a href="../CursoControlador?rota=edit&i=<%=c.getId()%>"><button class="btn btn-info mt-4" onclick="">Editar postagem</button></a>
+            <a href="alteracao.jsp"><button class="btn btn-danger mt-4">Deletar postagem</button></a>
             <hr>
 	    <%
-		
+	
 		  }
 	    
 	    %>
  	 </div>
  	 </div>
- 	 
-
-    
-    
-    
     <footer>
       <div class="navbar navbar-bottom bgred">
         <div class="container">
