@@ -31,9 +31,7 @@
         
         
         <%
-        Integer id = (Integer) request.getAttribute("i");
-        CursoPersist cp = new CursoPersist();
-		Curso c = cp.findById(id);
+		Curso c = (Curso) request.getAttribute("curso");
         %>
         <div class="row">
           <div class="col-md-12">
@@ -43,12 +41,12 @@
                   <label for="inputCURSO" class="control-label">Informar o CURSO:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputCURSO" placeholder="Curso <%=request.getParameter("curso") %>">
+                  <input type="text" class="form-control" id="inputCURSO" placeholder="Curso" value ="<%=c.getCurso() %>">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="inputNome" class="control-label">Informar o NOME:</label>
+                  <label for="inputNome" class="control-label"  value ="<%=c.getDescricao() %>">Informar o NOME:</label>
                 </div>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="inputNome" placeholder="Nome">
@@ -59,7 +57,7 @@
                   <label for="inputVALOR" class="control-label">Informar o VALOR:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputVALOR" placeholder="Valor">
+                 <input type="text" class="form-control" id="inputValor" placeholder="Valor" value ="<%=c.getValor() %>" >
                 </div>
               </div>
               <div class="form-group">
@@ -67,7 +65,7 @@
                   <label for="inputSITE" class="control-label">Informar o SITE:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputSITE" placeholder="Site">
+ 					<input type="text" class="form-control" id="inputSite" placeholder="Site" value ="<%=c.getSite() %>" >
                 </div>
               </div>
               <div class="form-group">

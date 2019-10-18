@@ -37,8 +37,12 @@ public class CursoControlador extends HttpServlet {
 		String rota=request.getParameter("rota");
 		if(rota.equalsIgnoreCase("edit")) {
 			acesso = edit;
+			String rotaId= request.getParameter("i");
+			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+rotaId);
+		        CursoPersist cp = new CursoPersist();
+				Curso c = cp.findById(Integer.parseInt(rotaId));
 			
-			request.setAttribute("i", request.getParameter("i"));
+			request.setAttribute("curso", c);
 			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
 			cursoViews.forward(request, response);
 			
@@ -51,10 +55,15 @@ public class CursoControlador extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acesso="";
 		String rota=request.getParameter("rota");
+		CursoPersist cp = new CursoPersist();
 		if(rota.equalsIgnoreCase("add")) {
 			acesso= add;
-			CursoPersist cp = new CursoPersist();
+			
 			Curso c = new Curso();
+			if(request.getAttribute("curso")!=null) {
+			    c = (Curso) request.getAttribute("curso");
+			}
+			
 			c.setCurso(request.getParameter("curso"));
 			c.setDescricao(request.getParameter("descricao"));
 			c.setSite(request.getParameter("site"));
