@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Model.Cliente;
+import Model.Curso;
+import PersistJPA.ClientePersist;
+import PersistJPA.CursoPersist;
+
 /**
  * Servlet implementation class ClienteControlador
  */
@@ -45,8 +50,27 @@ public class ClienteControlador extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String acesso="";
+		String rota=request.getParameter("rota");
+		ClientePersist cp = new ClientePersist();
+		if(rota.equalsIgnoreCase("add")) {
+			acesso= add;
+			
+			Cliente c = new Cliente();
+			if(request.getAttribute("cliente")!=null) {
+			    c = (Cliente) request.getAttribute("cliente");
+			}
+			
+			c.setCpf(request.getParameter("cpf"));
+			Curso curso = new Curso();
+		  //   int idCurso = (Curso) request.getParameter("curso");
+			c.setNome(request.getParameter("nome"));
+		//	c.setCurso();
+			cp.save(c);
+			
+			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
+			cursoViews.forward(request, response);
+		}
 	}
 
 }

@@ -38,7 +38,6 @@ public class CursoControlador extends HttpServlet {
 		if(rota.equalsIgnoreCase("edit")) {
 			acesso = edit;
 			String rotaId= request.getParameter("i");
-			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+rotaId);
 		        CursoPersist cp = new CursoPersist();
 				Curso c = cp.findById(Integer.parseInt(rotaId));
 			

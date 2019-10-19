@@ -1,8 +1,11 @@
+<%@page import="Model.Pagamento"%>
+<%@page import="PersistJPA.PagamentoPersist"%>
 <%@page import="Model.Curso"%>
 <%@page import="java.util.List"%>
 <%@page import="PersistJPA.CursoPersist"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +15,7 @@
     <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="../lib/css/padrao.css" rel="stylesheet" type="text/css">
   </head><body>
+
     <div class="section bgred text-justify">
       <div class="container">
         <div class="row text-center">
@@ -21,48 +25,65 @@
         </div>
       </div>
     </div>
+
     <div class="section">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h3 class="tt_menu">&gt;&gt; CURSOS - CONSULTAR UM NOVO CURSO &lt;&lt;</h3>
-          </div>
-        </div>
-     	<div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center corrigir">
-            <a class="btn btn-default" href="javascript:window.history.go(-1)">Voltar</a>
+            <h3 class="tt_menu">&gt;&gt; CURSOS &lt;&lt;</h3>
+            <div class="col-md-12  btn-group btn-group-lg btn-group-vertical">
+              <a href="consulta.html" class="btn btn-outline-primary">Consultar um Pagamento Específico</a>
+              <a href="cadastro.html" class="btn btn-default">Cadastrar um Novo Pagamento</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-	    <%
-	    	CursoPersist cp = new CursoPersist();
-	    	List<Curso> cursos = cp.findAll();
-	    	for(Curso c:cursos){
+             <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center corrigir">
+          <!--javascript:window.history.go(-1)   -->
+            <a class="btn btn-info" href="javascript:window.history.go(-1)">Voltar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 	<div class="container">
 
-	    	
+
+
+ 	 <div class="row justify-content-center">
+ 	      <%
+	    	PagamentoPersist pp = new PagamentoPersist();
+ 	      
+	    	List<Pagamento> pagamentos = pp.findAll();
+	    
+	    	for(Pagamento p:pagamentos){
+
+
 	    %>
 		   <div class="card mt-4">
 		        <div class="card-body">
-		            <h3><%=c.getCurso() %></h3>
-		            <h5>Descricao: <%=c.getDescricao() %></h5>
+		            <h3><%=p.getCpf() %></h3>
+		            <h5>Curso : <%=p.getCurso() %></h5>
 
-		            <h5>Site: <%=c.getSite() %></h5>
-		            <h5>Valor: <%=c.getValor() %></h5>
+		            <h5>Data Inscrição: <%=p.getDtaInscricao() %></h5>
+
 		        </div>
 		    </div>
-		    <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-info mt-4">Editar postagem</button></a>
-            <a href="/admin/postagens/deletar/{{_id}}"><button class="btn btn-danger mt-4">Deletar postagem</button></a>
+				
+		      <a href="../CursoControlador?rota=edit&i=<%=p.getId()%>"><button class="btn btn-info mt-4" onclick="">Editar Pagamento</button></a>
+            <a href="alteracao.jsp"><button class="btn btn-danger mt-4">Deletar Pagamento</button></a>
             <hr>
 	    <%
-		
+	
 		  }
 	    
 	    %>
-	  </div>
-	  </div>
+ 	 </div>
+ 	 </div>
     <footer>
       <div class="navbar navbar-bottom bgred">
         <div class="container">
@@ -72,7 +93,6 @@
         </div>
       </div>
     </footer>
-
   
 
 </body></html>
