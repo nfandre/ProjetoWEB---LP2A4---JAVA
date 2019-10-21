@@ -35,16 +35,28 @@ public class CursoControlador extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acesso="";
 		String rota=request.getParameter("rota");
+		CursoPersist cp = new CursoPersist();
 		if(rota.equalsIgnoreCase("edit")) {
 			acesso = edit;
 			String rotaId= request.getParameter("i");
-		        CursoPersist cp = new CursoPersist();
+		    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + request.getParameter("ola"));     
 				Curso c = cp.findById(Integer.parseInt(rotaId));
 			
 			request.setAttribute("curso", c);
 			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
 			cursoViews.forward(request, response);
+	
+			//response.sendRedirect(acesso);
 			
+		}
+		if(rota.equalsIgnoreCase("del")) {
+
+			acesso= add;
+			
+			Integer id = Integer.parseInt(request.getParameter("i"));	
+		    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ id);
+			  cp.remove(id);
+			  response.sendRedirect(acesso);
 		}
 	}
 
@@ -55,12 +67,16 @@ public class CursoControlador extends HttpServlet {
 		String acesso="";
 		String rota=request.getParameter("rota");
 		CursoPersist cp = new CursoPersist();
+		
 		if(rota.equalsIgnoreCase("add")) {
 			acesso= add;
 			
 			Curso c = new Curso();
-			if(request.getAttribute("curso")!=null) {
-			    c = (Curso) request.getAttribute("curso");
+			
+			if(request.getParameter("id")!=null) {
+				Integer id = Integer.parseInt(request.getParameter("id"));
+			    c = cp.findById(id);
+		
 			}
 			
 			c.setCurso(request.getParameter("curso"));
@@ -69,9 +85,13 @@ public class CursoControlador extends HttpServlet {
 			c.setValor(request.getParameter("valor"));
 			cp.save(c);
 			
-			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
-			cursoViews.forward(request, response);
+			
+//			request.getRequestDispatcher(acesso).forward(request, response);
+//			RequestDispatcher cursoViews = request.getRequestDispatcher(acesso);
+//			cursoViews.forward(request, response);
+			response.sendRedirect(acesso);
 		}
+
 
 	}
 

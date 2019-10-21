@@ -6,11 +6,11 @@
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="../lib/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
-    <link href="../lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../lib/css/padrao.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/js/bootstrap.min.js"></script>
+    <link href="./lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./lib/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./lib/css/padrao.css" rel="stylesheet" type="text/css">
   </head><body>
     <div class="section bgred text-justify">
       <div class="container">
@@ -32,24 +32,28 @@
         
         <%
 		Curso c = (Curso) request.getAttribute("curso");
+        request.setAttribute("curso", c);
         %>
         <div class="row">
           <div class="col-md-12">
-            <form class="form-horizontal" role="form" method="post"  action="../CursoControlador?rota=add">
+          <h1><%=c.getId() %></h1>
+            <form class="form-horizontal" role="form" method="post"  action="./CursoControlador?rota=add">
+            <input type="hidden" name="id" value=<%=c.getId() %>>
+
               <div class="form-group">
                 <div class="col-sm-2">
                   <label for="inputCURSO" class="control-label">Informar o CURSO:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputCURSO" placeholder="Curso" value ="<%=c.getCurso() %>">
+                   <input name="curso" type="text" class="form-control" id="inputCURSO" placeholder="Curso" value ="<%=c.getCurso() %>">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-2">
-                  <label for="inputNome" class="control-label"  value ="<%=c.getDescricao() %>">Informar o NOME:</label>
+                  <label for="inputNome" class="control-label">Informar o NOME:</label>
                 </div>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                  <input name="descricao" type="text" class="form-control" id="inputNome" placeholder="Descrição"  value ="<%=c.getDescricao() %>">
                 </div>
               </div>
               <div class="form-group">
@@ -57,7 +61,7 @@
                   <label for="inputVALOR" class="control-label">Informar o VALOR:</label>
                 </div>
                 <div class="col-sm-10">
-                 <input type="text" class="form-control" id="inputValor" placeholder="Valor" value ="<%=c.getValor() %>" >
+                <input name="valor" type="text" class="form-control" id="inputVALOR" placeholder="Valor" value ="<%=c.getValor() %>" >
                 </div>
               </div>
               <div class="form-group">
@@ -65,7 +69,7 @@
                   <label for="inputSITE" class="control-label">Informar o SITE:</label>
                 </div>
                 <div class="col-sm-10">
- 					<input type="text" class="form-control" id="inputSite" placeholder="Site" value ="<%=c.getSite() %>" >
+ 					 <input name="site" type="text" class="form-control" id="inputSITE" placeholder="Site" value ="<%=c.getSite() %>" >
                 </div>
               </div>
               <div class="form-group">
@@ -82,7 +86,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center corrigir">
-            <a class="btn btn-default" href="javascript:window.history.go(-1)">Voltar</a>
+            <a class="btn btn-default" href="index.jsp">Voltar</a>
           </div>
         </div>
       </div>

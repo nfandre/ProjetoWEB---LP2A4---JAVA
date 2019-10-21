@@ -42,7 +42,7 @@
         <div class="row">
           <div class="col-md-12 text-center corrigir">
           <!--javascript:window.history.go(-1)   -->
-            <a class="btn btn-info" href="javascript:window.history.go(-1)">Voltar</a>
+            <a class="btn btn-info" href="../index.jsp">Voltar</a>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
 	    	List<Curso> cursos = cp.findAll();
 	    
 	    	for(Curso c:cursos){
-
+			c.getId();
 
 	    %>
 		   <div class="card mt-4">
@@ -73,23 +73,24 @@
 		    </div>
 				
 		      <a href="../CursoControlador?rota=edit&i=<%=c.getId()%>"><button class="btn btn-info mt-4" onclick="">Editar postagem</button></a>
-            <a href="alteracao.jsp"><button class="btn btn-danger mt-4">Deletar postagem</button></a>
+            <a href="../CursoControlador?rota=del&i=<%=c.getId()%>"><button class="btn btn-danger mt-4">Deletar postagem</button></a>
             <hr>
+
 	    <%
-	
+	    request.setAttribute("ola","ola");
 		  }
 	    
 	    %>
  	 </div>
  	 </div>
     <footer>
-      <div class="navbar navbar-bottom bgred">
+      <nav class="navbar navbar-bottom bgred">
         <div class="container">
           <div class="row">
             <div class="col-sm-12 text-center" style="top:13px;color:#fff;">©nfandre - André Nascimento de Freitas</div>
           </div>
         </div>
-      </div>
+      </nav>
     </footer>
   
 

@@ -76,7 +76,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center corrigir">
-            <a class="btn btn-default" href="javascript:window.history.go(-1)">Voltar</a>
+            <a class="btn btn-default" href="./index.jsp">Voltar</a>
           </div>
         </div>
       </div>
